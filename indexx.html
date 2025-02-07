@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feel Better Soon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: url('your-background-image.jpg') no-repeat center center/cover;
+        }
+        .button {
+            position: absolute;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            background-color: #ff5e78;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .heart, .message {
+            position: absolute;
+            font-size: 24px;
+            color: red;
+            animation: floatUp 2s ease-out forwards;
+        }
+        .message {
+            font-size: 18px;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <button class="button" onclick="showEffects()">Hope You Are Feeling Better ❤️</button>
+    <script>
+        function showEffects() {
+            const messages = [
+                "You are loved ❤️",
+                "Everything will be okay 😊",
+                "You are stronger than you think! 💪",
+                "I'm here for you 💖",
+                "Sending warm hugs 🤗",
+                "Tomorrow is a new day 🌅",
+                "You are not alone 💕"
+            ];
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                document.body.appendChild(heart);
+                
+                let x = Math.random() * window.innerWidth;
+                let y = Math.random() * window.innerHeight;
+                
+                heart.style.left = `${x}px`;
+                heart.style.top = `${y}px`;
+                
+                setTimeout(() => heart.remove(), 2000);
+            }
+            
+            let message = document.createElement('div');
+            message.className = 'message';
+            message.innerHTML = messages[Math.floor(Math.random() * messages.length)];
+            document.body.appendChild(message);
+            
+            let x = Math.random() * (window.innerWidth - 200);
+            let y = Math.random() * (window.innerHeight - 100);
+            
+            message.style.left = `${x}px`;
+            message.style.top = `${y}px`;
+            
+            setTimeout(() => message.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
+
